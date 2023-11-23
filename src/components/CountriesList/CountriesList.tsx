@@ -15,11 +15,11 @@ const CountriesList: React.FC<Props> = React.memo(
     return (
       <ul>
         <div>
-          <b>Countries List:</b>
+          <b className="fs-3">Countries List:</b>
         </div>
         {countries.map((country, index) => (
           <button
-            className="d-block country-btn"
+            className="d-block country-btn fs-3"
             key={index}
             onClick={() => countryClick(country.alpha3Code)}
           >

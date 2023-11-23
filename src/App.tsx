@@ -5,6 +5,8 @@ import { CountryConf, CountryInfoConf } from "./type";
 import axios from "axios";
 import Preloader from "./components/Preloader/Preloader";
 
+const COUNTRIS_ALPHACODE = "https://restcountries.com/v2/alpha/";
+
 function App() {
   const [countries, setCountries] = useState<CountryConf[]>([]);
   const [countryInfo, setCountryInfo] = useState<CountryInfoConf | null>(null);
@@ -31,7 +33,7 @@ function App() {
     setPreloader(true);
 
     const countryInfoResponse = await axios.get<CountryInfoConf>(
-      `https://restcountries.com/v2/alpha/${alpha3Code}`
+      COUNTRIS_ALPHACODE + alpha3Code
     );
 
     const data = countryInfoResponse.data;
@@ -39,7 +41,7 @@ function App() {
     const bordersData = await Promise.all(
       data.borders?.map(async (border) => {
         const borderResponse = await axios.get<CountryInfoConf>(
-          `https://restcountries.com/v2/alpha/${border}`
+          COUNTRIS_ALPHACODE + border
         );
         return borderResponse.data.name;
       }) || ["no borders"]
