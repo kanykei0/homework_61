@@ -1,0 +1,12 @@
+.country-flag {
+  width: 200px;
+}
+.country-btn {
+  border: none;
+  background-color: transparent;
+}
+.countries-list {
+  padding: 10px;
+  height: 100vh;
+  overflow-y: auto;
+}
